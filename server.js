@@ -37,7 +37,7 @@ app.use(limiter);
 // CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://eron-front.vercel.app', 'https://eron-front.onrender.com'] // Allow both Vercel and Render frontends
+    ? ['https://lead-management-system-frontend-roan.vercel.app/', 'https://eron-front.onrender.com'] // Allow both Vercel and Render frontends
     : true, // Allow all origins for development
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
