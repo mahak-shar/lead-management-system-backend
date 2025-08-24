@@ -34,15 +34,19 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://lead-management-system-frontend-roan.vercel.app/', 'https://eron-front.onrender.com'] // Allow both Vercel and Render frontends
+    ? [
+        "https://lead-management-system-frontend-roan.vercel.app",  // ✅ removed trailing slash
+        "https://eron-front.onrender.com"
+      ]
     : true, // Allow all origins for development
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }));
+
+app.options("*", cors());
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
